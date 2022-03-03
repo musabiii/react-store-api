@@ -1,13 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { adjustqty } from "../redux/actions";
-import { productType } from "../types";
+import { adjustqty } from "../../redux/actions";
+import { productType } from "../../types";
 import ProductLoader from "./product-loader";
 
 const ProductBlock = styled.div`
   margin: 10px;
   width: 200px;
+  text-align: center;
   img {
     /* width: 100%; */
     height: 200px;
@@ -36,13 +37,13 @@ const Product: React.FC<productProps> = ({ product }) => {
     }
 
     const handleClick = () => {
-        dispatch(adjustqty(product,1))
+        dispatch(adjustqty(product.id,1))
     }
   return (
     <ProductBlock>
       <img src={product.image} alt="" />
       <p>{product.title}</p>
-      <h3>{product.price}</h3>
+      <h3>{product.price} $</h3>
       <button onClick={handleClick}>add to cart</button>
     </ProductBlock>
   );

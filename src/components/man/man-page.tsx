@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Filter from "./filter";
+import Filter from "../filter/filter";
 import ManList from "./man-list";
-import Sort from "./sort";
+import Sort from "../filter/sort";
 
 const ManPageBlock = styled.div`
   display: flex;

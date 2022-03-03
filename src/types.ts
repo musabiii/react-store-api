@@ -1,5 +1,8 @@
 export enum actions {
-  ADJUST_QTY = 'ADJUST_QTY'
+  ADJUST_QTY = "ADJUST_QTY",
+  SET_SORT = 'SET_SORT',
+  SET_FILTER_FROM = 'SET_FILTER_FROM',
+  SET_FILTER_TILL = 'SET_FILTER_TILL'
 }
 
 export interface actionType {
@@ -8,7 +11,7 @@ export interface actionType {
 }
 
 export interface stateType {
-  cart: cartProductType[];
+  cart: cartStateType[];
 }
 
 export interface productType {
@@ -17,9 +20,32 @@ export interface productType {
   price: number;
   description: string;
   category: string;
-  image:string
+  image: string;
+}
+
+export interface cartStateType {
+  id: number;
+  qty: number;
 }
 
 export interface cartProductType extends productType {
-  qty:number
+  qty: number;
+}
+
+
+//filter
+
+export interface filterType {
+  from:number,
+  till:number
+}
+
+export interface filterState {
+  filter:filterType,
+  sort:sortType
+}
+
+export enum sortType {
+  name = "name",
+  price = "price",
 }
