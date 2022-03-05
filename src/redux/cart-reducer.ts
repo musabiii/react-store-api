@@ -19,7 +19,24 @@ export const cartReducer = (
               cart:[...state.cart,{id,qty:1}]
           }
       }
-      return state;
+      const before = state.cart.slice(0,index);
+      const after = state.cart.slice(index+1);
+
+      if (state.cart[index].qty + action.payload.qty === 0) {
+        return {cart:[...before,...after]}
+      }
+
+      const newItem = {
+        id:id,
+        qty:state.cart[index].qty+action.payload.qty
+      }
+
+
+      return {
+        cart:[...before,newItem,...after]
+      }
+
+      
     default:
       return state;
   }

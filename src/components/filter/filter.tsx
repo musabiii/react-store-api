@@ -6,7 +6,7 @@ import { RootState } from "../../redux/store";
 import { actions, filterType } from "../../types";
 
 const FilterBlock = styled.div`
-  background-color: aquamarine;
+  background-color: #C1DEAE;
   text-align: center;
   padding: 10px;
   height: 100%;

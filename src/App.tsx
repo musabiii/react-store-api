@@ -10,6 +10,7 @@ import WomanPage from "./components/woman/woman-page";
 const AppBlock = styled.div`
   margin: 0 auto;
   width: 800px;
+  color: #696969;
   a {
     text-decoration: none;
   }
