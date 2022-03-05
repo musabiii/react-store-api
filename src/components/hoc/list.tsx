@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { RootState } from "../../redux/store";
 import { filterType, productType, sortType } from "../../types";
 import { filterIt, sortIt } from "../../utils/filter";
-import { getManProducts } from "../../utils/service";
+import { getManProducts, getWomanProducts } from "../../utils/service";
 import Product from "../product/product";
 import ProductLoader from "../product/product-loader";
 
@@ -14,7 +14,11 @@ const ListBlock = styled.div`
   justify-content: space-around;
 `;
 
-export default function ManList() {
+interface listProps {
+    getProducts:()=>Promise<productType[]>
+}
+
+export const List:React.FC<listProps> = ({getProducts}) => {
   const [list, setList] = useState<productType[]>([]);
 
   const stateFilter = useSelector<RootState>(state=>state.filterReducer.filter) as filterType;
@@ -27,8 +31,8 @@ export default function ManList() {
   sortIt(filteredList,stateSort);
 
   useEffect(() => {
-    getManProducts().then((products) => setList(products));
-  }, []);
+    getProducts().then((products) => setList(products));
+  }, [getProducts]);
 
   if (!list.length) {
     return <ListBlock>{Array(4).fill(<ProductLoader />)}</ListBlock>;

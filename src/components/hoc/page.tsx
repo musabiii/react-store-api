@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Filter from "../filter/filter";
-import WomanList from "./woman-list";
 import Sort from "../filter/sort";
-import { List } from "../hoc/list";
-import { getWomanProducts } from "../../utils/service";
+import { productType } from "../../types";
+import { List } from "./list";
 
 const ManPageBlock = styled.div`
   display: flex;
@@ -16,7 +15,12 @@ const ManPageBlock = styled.div`
   }
 `;
 
-export default function WomanPage() {
+
+interface pageProps {
+    getProducts:()=>Promise<productType[]>
+}
+
+export  const Page:React.FC<pageProps>=({getProducts})=> {
 //   getManProducts().then((products) => console.log(products));
   return (
     <ManPageBlock>
@@ -25,7 +29,7 @@ export default function WomanPage() {
       </div>
       <div className="content">
         <Sort />
-        <List getProducts={getWomanProducts} />
+        <List getProducts={getProducts} />
       </div>
     </ManPageBlock>
   );

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { RootState } from "../../redux/store";
 import { filterType, productType, sortType } from "../../types";
 import { filterIt, sortIt } from "../../utils/filter";
-import { getManProducts } from "../../utils/service";
+import { getManProducts, getWomanProducts } from "../../utils/service";
 import Product from "../product/product";
 import ProductLoader from "../product/product-loader";
 
@@ -14,7 +14,7 @@ const ListBlock = styled.div`
   justify-content: space-around;
 `;
 
-export default function ManList() {
+export default function WomanList() {
   const [list, setList] = useState<productType[]>([]);
 
   const stateFilter = useSelector<RootState>(state=>state.filterReducer.filter) as filterType;
@@ -27,7 +27,7 @@ export default function ManList() {
   sortIt(filteredList,stateSort);
 
   useEffect(() => {
-    getManProducts().then((products) => setList(products));
+    getWomanProducts().then((products) => setList(products));
   }, []);
 
   if (!list.length) {
