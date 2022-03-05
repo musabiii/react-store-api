@@ -2,11 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Cart from "./components/cart/cart";
-import { Page } from "./components/hoc/page";
+import { Page } from "./components/page/page";
 import Home from "./components/home";
-import ManPage from "./components/man/man-page";
 import Nav from "./components/nav";
-import WomanPage from "./components/woman/woman-page";
 import { getManProducts, getWomanProducts } from "./utils/service";
 
 const AppBlock = styled.div`
