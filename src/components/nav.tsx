@@ -34,10 +34,10 @@ export default function Nav() {
   return (
     <>
       <NavBlock>
-        <NavLink to="/">home</NavLink>
-        <NavLink to="/man">man</NavLink>
-        <NavLink to="/woman">woman</NavLink>
-        <NavLink to="/cart">cart({amount})</NavLink>
+        <NavLink to="/react-store-api">home</NavLink>
+        <NavLink to="/react-store-api/man">man</NavLink>
+        <NavLink to="/react-store-api/woman">woman</NavLink>
+        <NavLink to="/react-store-api/cart">cart({amount})</NavLink>
       </NavBlock>
       <Outlet />
     </>

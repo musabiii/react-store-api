@@ -28,11 +28,11 @@ function App() {
     <AppBlock className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Nav />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/man" element={<Page getProducts={getManProducts}/>} />
-            <Route path="/woman" element={<Page getProducts={getWomanProducts}/>} />
-            <Route path="/cart" element={<Cart />} />
+          <Route path="/react-store-api" element={<Nav />}>
+            <Route path="/react-store-api/" element={<Home />} />
+            <Route path="/react-store-api/man" element={<Page getProducts={getManProducts}/>} />
+            <Route path="/react-store-api/woman" element={<Page getProducts={getWomanProducts}/>} />
+            <Route path="/react-store-api/cart" element={<Cart />} />
           </Route>
         </Routes>
       </BrowserRouter>
