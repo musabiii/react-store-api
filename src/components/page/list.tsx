@@ -15,26 +15,35 @@ const ListBlock = styled.div`
 `;
 
 interface listProps {
-    getProducts:()=>Promise<productType[]>
+  getProducts: () => Promise<productType[]>;
 }
 
-export const List:React.FC<listProps> = ({getProducts}) => {
+export const List: React.FC<listProps> = ({ getProducts }) => {
   const [list, setList] = useState<productType[]>([]);
+  const [loading,setLoading] = useState(true);
 
-  const stateFilter = useSelector<RootState>(state=>state.filterReducer.filter) as filterType;
-  const stateSort = useSelector<RootState>(state=>state.filterReducer.sort) as sortType;
-  
-  let {from,till} = stateFilter;
-  till = (till===0)?99999:till;
+  const stateFilter = useSelector<RootState>(
+    (state) => state.filterReducer.filter
+  ) as filterType;
+  const stateSort = useSelector<RootState>(
+    (state) => state.filterReducer.sort
+  ) as sortType;
 
-  const filteredList = filterIt(list,from,till);
-  sortIt(filteredList,stateSort);
+  let { from, till } = stateFilter;
+  till = till === 0 ? 99999 : till;
+
+  const filteredList = filterIt(list, from, till);
+  sortIt(filteredList, stateSort);
 
   useEffect(() => {
-    getProducts().then((products) => setList(products));
+    setLoading(true);
+    getProducts().then((products) => {
+      setLoading(false);
+      setList(products)});
   }, [getProducts]);
 
-  if (!list.length) {
+  // if (!list.length) {
+    if (loading) {
     return <ListBlock>{Array(4).fill(<ProductLoader />)}</ListBlock>;
   }
 
@@ -45,4 +54,4 @@ export const List:React.FC<listProps> = ({getProducts}) => {
       ))}
     </ListBlock>
   );
-}
+};
